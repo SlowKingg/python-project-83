@@ -1,3 +1,6 @@
+# Load environment variables from .env file
+include .env
+
 # Install dependencies using uv
 install:
 	uv sync
@@ -32,5 +35,9 @@ lint:
 # Run both tests and linting
 check: lint
 
+# Initialize database from database.sql
+db-init:
+	psql -a $(DATABASE_URL) -f database.sql
+
 # Declare phony targets
-.PHONY: install dev start build render-start
+.PHONY: install dev start build render-start db-init
