@@ -1,5 +1,5 @@
 # Load environment variables from .env file
-include .env
+-include .env
 
 # Install dependencies using uv
 install:
