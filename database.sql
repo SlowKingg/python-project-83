@@ -1,6 +1,3 @@
--- Schema for the Page Analyzer database
--- This file defines the `urls` table
--- PostgreSQL-compatible
 DROP TABLE IF EXISTS urls;
 
 CREATE TABLE IF NOT EXISTS urls (
