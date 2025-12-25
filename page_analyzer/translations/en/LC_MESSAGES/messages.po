@@ -1,0 +1,60 @@
+# English translations for Page Analyzer.
+# Copyright (C) 2025 Page Analyzer
+# This file is distributed under the same license as the Page Analyzer project.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: 1.0\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2025-12-25 12:00+0000\n"
+"PO-Revision-Date: 2025-12-25 12:00+0000\n"
+"Last-Translator: \n"
+"Language: en\n"
+"Language-Team: English\n"
+"Plural-Forms: nplurals=2; plural=(n != 1)\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Generated-By: Babel 2.9.1\n"
+
+msgid "Page Analyzer"
+msgstr "Page Analyzer"
+
+msgid "Sites"
+msgstr "Sites"
+
+msgid "Check websites for SEO suitability for free"
+msgstr "Check websites for SEO suitability for free"
+
+msgid "URL to check"
+msgstr "URL to check"
+
+msgid "Check"
+msgstr "Check"
+
+msgid "URL already exists."
+msgstr "URL already exists."
+
+msgid "URL has been added successfully."
+msgstr "URL has been added successfully."
+
+msgid "URL not found."
+msgstr "URL not found."
+
+msgid "ID"
+msgstr "ID"
+
+msgid "Name"
+msgstr "Name"
+
+msgid "Site"
+msgstr "Site"
+
+msgid "Created at"
+msgstr "Created at"
+
+msgid "URL is too long."
+msgstr "URL is too long."
+
+msgid "Invalid URL."
+msgstr "Invalid URL."

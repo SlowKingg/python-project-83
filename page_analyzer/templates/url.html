@@ -1,4 +1,3 @@
-<!doctype html>
 <html lang="en">
     <head>
         <meta charset="utf-8" />
@@ -42,6 +41,7 @@
                 </div>
             </nav>
         </header>
+
         {% with messages = get_flashed_messages(with_categories=true) %} {% if
         messages %} {% for category, message in messages %}
         <div
@@ -51,41 +51,62 @@
             {{ message }}
         </div>
         {% endfor %} {% endif %} {% endwith %}
+
         <main class="flex-grow-1">
             <div class="container-lg mt-3">
-                <div class="row">
-                    <div
-                        class="col-12 col-md-10 col-lg-8 mx-auto border rounded-3 bg-light p-5"
+                <h1>{{ _('Site') }}: {{ url.name }}</h1>
+
+                <div class="table-responsive">
+                    <table
+                        class="table table-bordered table-hover text-nowrap"
+                        data-test="url"
                     >
-                        <h1 class="display-3">{{ _('Page Analyzer') }}</h1>
-                        <p class="lead">
-                            {{ _('Check websites for SEO suitability for free')
-                            }}
-                        </p>
-                        <form
-                            action="/urls "
-                            method="post"
-                            class="d-flex justify-content-center"
-                        >
-                            <label for="text" class="visually-hidden"
-                                >{{ _('URL to check') }}</label
-                            >
-                            <input
-                                type="text"
-                                name="url"
-                                placeholder="https://www.example.com"
-                                value="{{ url.name|default('', true) }}"
-                                class="form-control form-control-lg"
-                                required=""
-                            />
-                            <input
-                                type="submit"
-                                class="btn btn-primary btn-lg ms-3 px-5 text-uppercase mx-3"
-                                value="{{ _('Check') }}"
-                            />
-                        </form>
-                    </div>
+                        <tbody>
+                            <tr>
+                                <th>ID</th>
+                                <td>{{ url.id }}</td>
+                            </tr>
+                            <tr>
+                                <th>{{ _('Name') }}</th>
+                                <td>{{ url.name }}</td>
+                            </tr>
+                            <tr>
+                                <th>{{ _('Created at') }}</th>
+                                <td>{{ url.created_at }}</td>
+                            </tr>
+                        </tbody>
+                    </table>
                 </div>
+
+                {#
+                <h2 class="mt-5 mb-3">Проверки</h2>
+                <form method="post" action="/urls/1/checks">
+                    <input
+                        type="submit"
+                        class="btn btn-primary"
+                        value="Запустить проверку"
+                    />
+                </form>
+
+                <div>
+                    <table
+                        class="table table-bordered table-hover mt-2"
+                        data-test="checks"
+                    >
+                        <thead>
+                            <tr>
+                                <th>ID</th>
+                                <th>Код ответа</th>
+                                <th>h1</th>
+                                <th>title</th>
+                                <th>description</th>
+                                <th>Дата создания</th>
+                            </tr>
+                        </thead>
+                        <tbody></tbody>
+                    </table>
+                </div>
+                #}
             </div>
         </main>
     </body>

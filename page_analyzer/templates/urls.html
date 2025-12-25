@@ -53,38 +53,47 @@
         {% endfor %} {% endif %} {% endwith %}
         <main class="flex-grow-1">
             <div class="container-lg mt-3">
-                <div class="row">
-                    <div
-                        class="col-12 col-md-10 col-lg-8 mx-auto border rounded-3 bg-light p-5"
+                <h1>{{ _('Sites') }}</h1>
+
+                <div class="table-responsive">
+                    <table
+                        class="table table-bordered table-hover text-nowrap"
+                        data-test="urls"
                     >
-                        <h1 class="display-3">{{ _('Page Analyzer') }}</h1>
-                        <p class="lead">
-                            {{ _('Check websites for SEO suitability for free')
-                            }}
-                        </p>
-                        <form
-                            action="/urls "
-                            method="post"
-                            class="d-flex justify-content-center"
-                        >
-                            <label for="text" class="visually-hidden"
-                                >{{ _('URL to check') }}</label
-                            >
-                            <input
-                                type="text"
-                                name="url"
-                                placeholder="https://www.example.com"
-                                value="{{ url.name|default('', true) }}"
-                                class="form-control form-control-lg"
-                                required=""
-                            />
-                            <input
-                                type="submit"
-                                class="btn btn-primary btn-lg ms-3 px-5 text-uppercase mx-3"
-                                value="{{ _('Check') }}"
-                            />
-                        </form>
-                    </div>
+                        <thead>
+                            <tr>
+                                <th>{{ _('ID') }}</th>
+                                <th>{{ _('Name') }}</th>
+                                {#
+                                <th>Последняя проверка</th>
+                                <th>Код ответа</th>
+                                #}
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {% for url in urls %}
+                            <tr>
+                                <td>{{ url.id }}</td>
+                                <td>
+                                    <a href="/urls/{{ url.id }}"
+                                        >{{ url.name }}</a
+                                    >
+                                </td>
+                                {#
+                                <td>
+                                    {% if url.last_check_at %} {{
+                                    url.last_check_at }} {% else %} - {% endif
+                                    %}
+                                </td>
+                                <td>
+                                    {% if url.status_code %} {{ url.status_code
+                                    }} {% else %} - {% endif %}
+                                </td>
+                                #}
+                            </tr>
+                            {% endfor %}
+                        </tbody>
+                    </table>
                 </div>
             </div>
         </main>
