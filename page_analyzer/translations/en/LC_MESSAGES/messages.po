@@ -41,6 +41,15 @@ msgstr "URL has been added successfully."
 msgid "URL not found."
 msgstr "URL not found."
 
+msgid "Page not found"
+msgstr "Page not found"
+
+msgid "There's nothing here you're looking for"
+msgstr "There's nothing here you're looking for"
+
+msgid "Return to homepage"
+msgstr "Return to homepage"
+
 msgid "ID"
 msgstr "ID"
 

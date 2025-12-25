@@ -13,28 +13,42 @@
             integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH"
             crossorigin="anonymous"
         />
-        <title>Page Analyzer</title>
+        <title>{{ _('Page Analyzer') }}</title>
     </head>
     <body class="min-vh-100 d-flex flex-column">
         <header class="flex-shrink-0">
             <nav class="navbar navbar-expand-md navbar-dark bg-dark px-3">
-                <a class="navbar-brand" href="/">Page Analyzer</a>
+                <a class="navbar-brand" href="/">{{ _('Page Analyzer') }}</a>
                 <div id="navbarNav">
                     <ul class="navbar-nav">
                         <li class="nav-item">
-                            <a class="nav-link" href="/urls">Sites</a>
+                            <a class="nav-link" href="/urls"
+                                >{{ _('Sites') }}</a
+                            >
                         </li>
                     </ul>
+                </div>
+                <div class="ms-auto">
+                    <a
+                        href="/set_language/en"
+                        class="btn btn-sm btn-outline-light me-1"
+                        >EN</a
+                    >
+                    <a
+                        href="/set_language/ru"
+                        class="btn btn-sm btn-outline-light"
+                        >RU</a
+                    >
                 </div>
             </nav>
         </header>
 
         <main class="flex-grow-1">
             <div class="container-lg mt-3">
-                <h1>Page not found</h1>
+                <h1>{{ _('Page not found') }}</h1>
 
-                <p>There's nothing here you're looking for</p>
-                <p><a href="/">Return to homepage</a></p>
+                <p>{{ _("There's nothing here you're looking for") }}</p>
+                <p><a href="/">{{ _('Return to homepage') }}</a></p>
             </div>
         </main>
     </body>

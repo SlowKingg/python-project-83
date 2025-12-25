@@ -4,6 +4,7 @@ import psycopg2
 from dotenv import load_dotenv
 from flask import (
     Flask,
+    abort,
     flash,
     redirect,
     render_template,
@@ -84,6 +85,11 @@ def add_url():
 def view_url(url_id):
     url = url_repo.get_url_by_id(url_id)
     if not url:
-        flash(gettext("URL not found."), "danger")
-        return redirect(url_for("list_urls"))
+        abort(404)
     return render_template("url.html", url=url)
+
+
+@app.errorhandler(404)
+def page_not_found(e):
+    # note that we set the 404 status explicitly
+    return render_template("404.html"), 404
