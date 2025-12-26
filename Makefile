@@ -39,5 +39,27 @@ check: lint
 db-init:
 	psql -a $(DATABASE_URL) -f database.sql
 
+# Babel / i18n settings
+BABEL_CFG ?= babel.cfg
+TRANS_DIR ?= page_analyzer/translations
+POT_FILE ?= $(TRANS_DIR)/messages.pot
+
+# Extract messages into POT
+babel-extract:
+	uv run pybabel extract -F $(BABEL_CFG) -o $(POT_FILE) .
+
+# Initialize a locale, usage: make babel-init LOCALE=ru
+babel-init:
+	@if [ -z "$(LOCALE)" ]; then echo "LOCALE is required (e.g., make babel-init LOCALE=ru)"; exit 1; fi
+	uv run pybabel init -i $(POT_FILE) -d $(TRANS_DIR) -l $(LOCALE)
+
+# Update existing locales from POT
+babel-update:
+	uv run pybabel update -i $(POT_FILE) -d $(TRANS_DIR)
+
+# Compile MO files for all locales
+babel-compile:
+	uv run pybabel compile -d $(TRANS_DIR)
+
 # Declare phony targets
-.PHONY: install dev start build render-start db-init
+.PHONY: install dev start build render-start db-init babel-extract babel-init babel-update babel-compile
