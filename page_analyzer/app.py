@@ -1,6 +1,7 @@
 import os
 
 import psycopg2
+import requests
 from dotenv import load_dotenv
 from flask import (
     Flask,
@@ -71,12 +72,13 @@ def list_urls():
 
 @app.post("/urls")
 def add_url():
-    url = request.form.get("url")
-    url = normalize_url(url)
+    data = request.form.get("url")
+    url = normalize_url(data)
     error = validate_url(url)
     if error:
         flash(error, "danger")
-        return render_template("index.html", url={"name": url}, error=error)
+        print(url)
+        return render_template("index.html", url={"name": data}, error=error)
 
     if existing_url := url_repo.get_url_by_name(url):
         flash(gettext("URL already exists."), "info")
@@ -93,7 +95,17 @@ def check_url(url_id):
     if not url:
         abort(500)
 
-    url_repo.add_url_check_dummy(url_id)
+    try:
+        status_code = requests.get(url["name"]).status_code
+    except requests.RequestException:
+        flash(gettext("Failed to check the URL."), "danger")
+        return redirect(url_for("view_url", url_id=url_id))
+
+    if str(status_code)[0] == "5":
+        flash(gettext("5xx server error"), "danger")
+        return redirect(url_for("view_url", url_id=url_id))
+
+    url_repo.add_url_check_dummy(url_id, status_code)
     flash(gettext("URL has been checked successfully."), "success")
     return redirect(url_for("view_url", url_id=url_id))
 

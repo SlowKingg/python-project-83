@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version:  1.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2025-12-26 20:28+0700\n"
+"POT-Creation-Date: 2025-12-26 21:16+0700\n"
 "PO-Revision-Date: 2025-12-25 12:00+0000\n"
 "Last-Translator: \n"
 "Language: ru\n"
@@ -19,15 +19,23 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Generated-By: Babel 2.17.0\n"
 
-#: page_analyzer/app.py:82
+#: page_analyzer/app.py:84
 msgid "URL already exists."
 msgstr "URL уже существует."
 
-#: page_analyzer/app.py:86
+#: page_analyzer/app.py:88
 msgid "URL has been added successfully."
 msgstr "URL успешно добавлен."
 
-#: page_analyzer/app.py:97
+#: page_analyzer/app.py:101
+msgid "Failed to check the URL."
+msgstr "Не удалось проверить URL-адрес."
+
+#: page_analyzer/app.py:105
+msgid "5xx server error"
+msgstr "ошибка сервера 5xx"
+
+#: page_analyzer/app.py:109
 msgid "URL has been checked successfully."
 msgstr "Проверка URL-адреса прошла успешно."
 

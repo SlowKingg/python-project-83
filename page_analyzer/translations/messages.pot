@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2025-12-26 20:28+0700\n"
+"POT-Creation-Date: 2025-12-26 21:16+0700\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -17,15 +17,23 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Generated-By: Babel 2.17.0\n"
 
-#: page_analyzer/app.py:82
+#: page_analyzer/app.py:84
 msgid "URL already exists."
 msgstr ""
 
-#: page_analyzer/app.py:86
+#: page_analyzer/app.py:88
 msgid "URL has been added successfully."
 msgstr ""
 
-#: page_analyzer/app.py:97
+#: page_analyzer/app.py:101
+msgid "Failed to check the URL."
+msgstr ""
+
+#: page_analyzer/app.py:105
+msgid "5xx server error"
+msgstr ""
+
+#: page_analyzer/app.py:109
 msgid "URL has been checked successfully."
 msgstr ""
 

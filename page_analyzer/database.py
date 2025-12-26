@@ -32,7 +32,7 @@ class UrlRepository:
             rows = cursor.fetchall()
             return [dict(row) for row in rows]
 
-    def add_url_check_dummy(self, url_id):
+    def add_url_check_dummy(self, url_id, status_code):
         with self.conn.cursor(cursor_factory=DictCursor) as cursor:
             cursor.execute(
                 """
@@ -40,7 +40,13 @@ class UrlRepository:
                 (url_id, status_code, h1, title, description)
                 VALUES (%s, %s, %s, %s, %s)
                 """,
-                (url_id, 200, "Dummy H1", "Dummy Title", "Dummy Description"),
+                (
+                    url_id,
+                    status_code,
+                    "Dummy H1",
+                    "Dummy Title",
+                    "Dummy Description",
+                ),
             )
             self.conn.commit()
 
@@ -64,7 +70,7 @@ class UrlRepository:
             )
             rows = cursor.fetchall()
             return [dict(row) for row in rows]
-    
+
     def get_last_url_check(self, url_id):
         with self.conn.cursor(cursor_factory=DictCursor) as cursor:
             cursor.execute(
