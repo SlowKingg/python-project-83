@@ -1,18 +1,17 @@
-# English translations for Page Analyzer.
-# Copyright (C) 2025 Page Analyzer
-# This file is distributed under the same license as the Page Analyzer
-# project.
+# Translations template for PROJECT.
+# Copyright (C) 2025 ORGANIZATION
+# This file is distributed under the same license as the PROJECT project.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2025.
 #
+#, fuzzy
 msgid ""
 msgstr ""
-"Project-Id-Version:  1.0\n"
-"Report-Msgid-Bugs-To: \n"
+"Project-Id-Version: PROJECT VERSION\n"
+"Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
 "POT-Creation-Date: 2025-12-26 20:28+0700\n"
-"PO-Revision-Date: 2025-12-25 12:00+0000\n"
-"Last-Translator: \n"
-"Language: en\n"
-"Language-Team: English\n"
-"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -20,23 +19,23 @@ msgstr ""
 
 #: page_analyzer/app.py:82
 msgid "URL already exists."
-msgstr "URL already exists."
+msgstr ""
 
 #: page_analyzer/app.py:86
 msgid "URL has been added successfully."
-msgstr "URL has been added successfully."
+msgstr ""
 
 #: page_analyzer/app.py:97
 msgid "URL has been checked successfully."
-msgstr "URL has been checked successfully."
+msgstr ""
 
 #: page_analyzer/validator.py:14
 msgid "URL is too long."
-msgstr "URL is too long."
+msgstr ""
 
 #: page_analyzer/validator.py:17
 msgid "Invalid URL."
-msgstr "Invalid URL."
+msgstr ""
 
 #: page_analyzer/templates/404.html:20 page_analyzer/templates/404.html:25
 #: page_analyzer/templates/500.html:20 page_analyzer/templates/500.html:25
@@ -45,82 +44,79 @@ msgstr "Invalid URL."
 #: page_analyzer/templates/url.html:24 page_analyzer/templates/urls.html:20
 #: page_analyzer/templates/urls.html:25
 msgid "Page Analyzer"
-msgstr "Page Analyzer"
+msgstr ""
 
 #: page_analyzer/templates/404.html:30 page_analyzer/templates/500.html:30
 #: page_analyzer/templates/index.html:30 page_analyzer/templates/url.html:29
 #: page_analyzer/templates/urls.html:30 page_analyzer/templates/urls.html:60
 msgid "Sites"
-msgstr "Sites"
+msgstr ""
 
 #: page_analyzer/templates/404.html:52
 msgid "Page not found"
-msgstr "Page not found"
+msgstr ""
 
 #: page_analyzer/templates/404.html:54
 msgid "There's nothing here you're looking for"
-msgstr "There's nothing here you're looking for"
+msgstr ""
 
 #: page_analyzer/templates/404.html:55
 msgid "Return to homepage"
-msgstr "Return to homepage"
+msgstr ""
 
 #: page_analyzer/templates/500.html:52
 msgid "Oops, something went wrong"
-msgstr "Oops, something went wrong"
+msgstr ""
 
 #: page_analyzer/templates/500.html:56
 msgid "Error 500"
-msgstr "Error 500"
+msgstr ""
 
 #: page_analyzer/templates/index.html:66
 msgid "Check websites for SEO suitability for free"
-msgstr "Check websites for SEO suitability for free"
+msgstr ""
 
 #: page_analyzer/templates/index.html:75
 msgid "URL to check"
-msgstr "URL to check"
+msgstr ""
 
 #: page_analyzer/templates/index.html:88
 msgid "Check"
-msgstr "Check"
+msgstr ""
 
 #: page_analyzer/templates/url.html:61
 msgid "Site"
-msgstr "Site"
+msgstr ""
 
 #: page_analyzer/templates/url.html:74 page_analyzer/templates/urls.html:70
 msgid "Name"
-msgstr "Name"
+msgstr ""
 
 #: page_analyzer/templates/url.html:78 page_analyzer/templates/url.html:110
 msgid "Created at"
-msgstr "Created at"
+msgstr ""
 
 #: page_analyzer/templates/url.html:105 page_analyzer/templates/urls.html:69
 msgid "ID"
-msgstr "ID"
+msgstr ""
 
 #: page_analyzer/templates/url.html:106 page_analyzer/templates/urls.html:72
 msgid "Status Code"
-msgstr "Status Code"
+msgstr ""
 
 #: page_analyzer/templates/url.html:107
 msgid "H1 Heading"
-msgstr "H1 Heading"
+msgstr ""
 
 #: page_analyzer/templates/url.html:108
 msgid "Title"
-msgstr "Title"
+msgstr ""
 
 #: page_analyzer/templates/url.html:109
 msgid "Description"
-msgstr "Description"
+msgstr ""
 
 #: page_analyzer/templates/urls.html:71
 msgid "Last Check"
-msgstr "Last Check"
-
-#~ msgid "URL not found."
-#~ msgstr "URL not found."
+msgstr ""
 

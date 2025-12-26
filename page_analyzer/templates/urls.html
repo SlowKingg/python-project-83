@@ -68,10 +68,8 @@
                             <tr>
                                 <th>{{ _('ID') }}</th>
                                 <th>{{ _('Name') }}</th>
-                                {#
-                                <th>Последняя проверка</th>
-                                <th>Код ответа</th>
-                                #}
+                                <th>{{ _('Last Check') }}</th>
+                                <th>{{ _('Status Code') }}</th>
                             </tr>
                         </thead>
                         <tbody>
@@ -83,7 +81,6 @@
                                         >{{ url.name }}</a
                                     >
                                 </td>
-                                {#
                                 <td>
                                     {% if url.last_check_at %} {{
                                     url.last_check_at }} {% else %} - {% endif
@@ -93,7 +90,6 @@
                                     {% if url.status_code %} {{ url.status_code
                                     }} {% else %} - {% endif %}
                                 </td>
-                                #}
                             </tr>
                             {% endfor %}
                         </tbody>

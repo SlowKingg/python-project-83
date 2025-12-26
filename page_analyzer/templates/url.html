@@ -82,9 +82,12 @@
                     </table>
                 </div>
 
-                {#
                 <h2 class="mt-5 mb-3">Проверки</h2>
-                <form method="post" action="/urls/1/checks">
+                <form
+                    method="post"
+                    action="/urls/{{ url.id }}/checks"
+                    class="mb-4"
+                >
                     <input
                         type="submit"
                         class="btn btn-primary"
@@ -99,18 +102,28 @@
                     >
                         <thead>
                             <tr>
-                                <th>ID</th>
-                                <th>Код ответа</th>
-                                <th>h1</th>
-                                <th>title</th>
-                                <th>description</th>
-                                <th>Дата создания</th>
+                                <th>{{ _('ID') }}</th>
+                                <th>{{ _('Status Code') }}</th>
+                                <th>{{ _('H1 Heading') }}</th>
+                                <th>{{ _('Title') }}</th>
+                                <th>{{ _('Description') }}</th>
+                                <th>{{ _('Created at') }}</th>
                             </tr>
                         </thead>
-                        <tbody></tbody>
+                        <tbody>
+                            {% for check in url.checks %}
+                            <tr>
+                                <td>{{ check.id }}</td>
+                                <td>{{ check.status_code }}</td>
+                                <td>{{ check.h1 }}</td>
+                                <td>{{ check.title }}</td>
+                                <td>{{ check.description }}</td>
+                                <td>{{ check.created_at }}</td>
+                            </tr>
+                            {% endfor %}
+                        </tbody>
                     </table>
                 </div>
-                #}
             </div>
         </main>
     </body>

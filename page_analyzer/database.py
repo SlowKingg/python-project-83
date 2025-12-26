@@ -64,6 +64,21 @@ class UrlRepository:
             )
             rows = cursor.fetchall()
             return [dict(row) for row in rows]
+    
+    def get_last_url_check(self, url_id):
+        with self.conn.cursor(cursor_factory=DictCursor) as cursor:
+            cursor.execute(
+                """
+                SELECT *
+                FROM url_checks
+                WHERE url_id = %s
+                ORDER BY created_at DESC
+                LIMIT 1
+                """,
+                (url_id,),
+            )
+            row = cursor.fetchone()
+            return dict(row) if row else None
 
     def get_url_check_by_id(self, check_id):
         with self.conn.cursor(cursor_factory=DictCursor) as cursor:

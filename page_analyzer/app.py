@@ -60,6 +60,12 @@ def index():
 @app.get("/urls")
 def list_urls():
     urls = url_repo.get_all_urls()
+    for url in urls:
+        last_check = url_repo.get_last_url_check(url["id"])
+        if last_check:
+            url["last_check_at"] = last_check["created_at"]
+            url["status_code"] = last_check["status_code"]
+
     return render_template("urls.html", urls=urls)
 
 
@@ -81,15 +87,32 @@ def add_url():
     return redirect(url_for("view_url", url_id=url_id))
 
 
+@app.post("/urls/<int:url_id>/checks")
+def check_url(url_id):
+    url = url_repo.get_url_by_id(url_id)
+    if not url:
+        abort(500)
+
+    url_repo.add_url_check_dummy(url_id)
+    flash(gettext("URL has been checked successfully."), "success")
+    return redirect(url_for("view_url", url_id=url_id))
+
+
 @app.get("/urls/<int:url_id>")
 def view_url(url_id):
     url = url_repo.get_url_by_id(url_id)
     if not url:
         abort(404)
+    checks = url_repo.get_url_checks(url_id)
+    url["checks"] = checks
     return render_template("url.html", url=url)
+
+
+@app.errorhandler(500)
+def internal_server_error(e):
+    return render_template("500.html"), 500
 
 
 @app.errorhandler(404)
 def page_not_found(e):
-    # note that we set the 404 status explicitly
     return render_template("404.html"), 404
