@@ -16,6 +16,7 @@ from flask import (
 from flask_babel import Babel, gettext
 
 from .database import UrlRepository
+from .parser import parse_page
 from .validator import normalize_url, validate_url
 
 load_dotenv()
@@ -98,7 +99,14 @@ def check_url(url_id):
         flash(gettext("An error occurred while checking"), "danger")
         return redirect(url_for("view_url", url_id=url_id))
 
-    url_repo.add_url_check_dummy(url_id, status_code)
+    data = parse_page(url["name"])
+    url_repo.add_url_check(
+        url_id,
+        status_code,
+        data["h1"],
+        data["title"],
+        data["description"],
+    )
     flash(gettext("The page has been checked successfully"), "success")
     return redirect(url_for("view_url", url_id=url_id))
 
