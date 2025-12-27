@@ -1,6 +1,5 @@
 import os
 
-import psycopg2
 import requests
 from dotenv import load_dotenv
 from flask import (
@@ -19,14 +18,6 @@ from .database import UrlRepository
 from .parser import parse_page
 from .validator import normalize_url, validate_url
 
-load_dotenv()
-app = Flask(__name__)
-app.config["SECRET_KEY"] = os.getenv("SECRET_KEY")
-app.config["BABEL_DEFAULT_LOCALE"] = "en"
-app.config["BABEL_SUPPORTED_LOCALES"] = ["en", "ru"]
-
-babel = Babel(app)
-
 
 def get_locale():
     if "lang" in session:
@@ -34,10 +25,15 @@ def get_locale():
     return "ru"
 
 
-babel.init_app(app, locale_selector=get_locale)
+app = Flask(__name__)
+babel = Babel(app, locale_selector=get_locale)
 
-conn = psycopg2.connect(os.getenv("DATABASE_URL"))
-url_repo = UrlRepository(conn)
+load_dotenv()
+app.config["SECRET_KEY"] = os.getenv("SECRET_KEY")
+app.config["BABEL_DEFAULT_LOCALE"] = "en"
+app.config["BABEL_SUPPORTED_LOCALES"] = ["en", "ru"]
+app.config["DATABASE_URL"] = os.getenv("DATABASE_URL")
+url_repo = UrlRepository(app.config["DATABASE_URL"])
 
 
 @app.route("/set_language/<lang>")
@@ -95,7 +91,7 @@ def check_url(url_id):
         flash(gettext("An error occurred while checking"), "danger")
         return redirect(url_for("view_url", url_id=url_id))
 
-    if str(status_code)[0] == "5":
+    if str(status_code)[0] == "5" or str(status_code)[0] == "4":
         flash(gettext("An error occurred while checking"), "danger")
         return redirect(url_for("view_url", url_id=url_id))
 
