@@ -10,6 +10,7 @@ from flask import (
     url_for,
 )
 from flask_babel import Babel, gettext
+from flask_wtf.csrf import CSRFProtect
 
 from .config import Config
 from .database import UrlRepository
@@ -25,6 +26,7 @@ def get_locale():
 
 app = Flask(__name__)
 app.config.from_object(Config)
+csrf = CSRFProtect(app)
 babel = Babel(app, locale_selector=get_locale)
 url_repo = UrlRepository(app.config["DATABASE_URL"])
 
