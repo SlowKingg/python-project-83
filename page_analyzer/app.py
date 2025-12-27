@@ -67,8 +67,9 @@ def add_url():
     error = validate_url(url)
     if error:
         flash(error, "danger")
-        print(url)
-        return render_template("index.html", url={"name": data}, error=error)
+        return render_template(
+            "index.html", url={"name": data}, error=error
+        ), 422
 
     if existing_url := url_repo.get_url_by_name(url):
         flash(gettext("The page already exists"), "info")
