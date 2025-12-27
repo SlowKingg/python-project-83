@@ -13,12 +13,18 @@
                 method="post"
                 class="d-flex justify-content-center"
             >
+                <input
+                    type="hidden"
+                    name="csrf_token"
+                    value="{{ csrf_token() }}"
+                />
                 <label for="text" class="visually-hidden"
                     >{{ _('URL to check') }}</label
                 >
                 <input
                     type="text"
                     name="url"
+                    id="text"
                     placeholder="https://www.example.com"
                     value="{{ url.name|default('', true) }}"
                     class="form-control form-control-lg"
