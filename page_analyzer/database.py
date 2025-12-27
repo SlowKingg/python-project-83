@@ -42,25 +42,6 @@ class UrlRepository:
                 rows = cursor.fetchall()
                 return [dict(row) for row in rows]
 
-    def add_url_check_dummy(self, url_id, status_code):
-        with self.get_connection() as conn:
-            with conn.cursor(cursor_factory=DictCursor) as cursor:
-                cursor.execute(
-                    """
-                INSERT INTO url_checks
-                (url_id, status_code, h1, title, description)
-                VALUES (%s, %s, %s, %s, %s)
-                """,
-                    (
-                        url_id,
-                        status_code,
-                        "Dummy H1",
-                        "Dummy Title",
-                        "Dummy Description",
-                    ),
-                )
-                conn.commit()
-
     def add_url_check(self, url_id, status_code, h1, title, description):
         with self.get_connection() as conn:
             with conn.cursor(cursor_factory=DictCursor) as cursor:

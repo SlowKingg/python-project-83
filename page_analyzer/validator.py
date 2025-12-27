@@ -15,3 +15,5 @@ def validate_url(url):
 
     if not validators.url(url):
         return gettext("Invalid URL")
+
+    return None

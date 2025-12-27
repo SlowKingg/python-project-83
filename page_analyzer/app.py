@@ -1,7 +1,4 @@
-import os
-
 import requests
-from dotenv import load_dotenv
 from flask import (
     Flask,
     abort,
@@ -14,6 +11,7 @@ from flask import (
 )
 from flask_babel import Babel, gettext
 
+from .config import Config
 from .database import UrlRepository
 from .parser import parse_page
 from .validator import normalize_url, validate_url
@@ -22,17 +20,12 @@ from .validator import normalize_url, validate_url
 def get_locale():
     if "lang" in session:
         return session["lang"]
-    return "ru"
+    return request.accept_languages.best_match(Config.BABEL_SUPPORTED_LOCALES)
 
 
 app = Flask(__name__)
+app.config.from_object(Config)
 babel = Babel(app, locale_selector=get_locale)
-
-load_dotenv()
-app.config["SECRET_KEY"] = os.getenv("SECRET_KEY")
-app.config["BABEL_DEFAULT_LOCALE"] = "en"
-app.config["BABEL_SUPPORTED_LOCALES"] = ["en", "ru"]
-app.config["DATABASE_URL"] = os.getenv("DATABASE_URL")
 url_repo = UrlRepository(app.config["DATABASE_URL"])
 
 
@@ -92,7 +85,7 @@ def check_url(url_id):
         flash(gettext("An error occurred while checking"), "danger")
         return redirect(url_for("view_url", url_id=url_id))
 
-    if str(status_code)[0] == "5" or str(status_code)[0] == "4":
+    if status_code >= 400:
         flash(gettext("An error occurred while checking"), "danger")
         return redirect(url_for("view_url", url_id=url_id))
 
