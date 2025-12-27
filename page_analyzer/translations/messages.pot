@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2025-12-26 21:16+0700\n"
+"POT-Creation-Date: 2025-12-27 18:03+0700\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -17,32 +17,24 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Generated-By: Babel 2.17.0\n"
 
-#: page_analyzer/app.py:84
-msgid "URL already exists."
+#: page_analyzer/app.py:77
+msgid "The page already exists"
 msgstr ""
 
-#: page_analyzer/app.py:88
-msgid "URL has been added successfully."
+#: page_analyzer/app.py:81
+msgid "The page has been added successfully"
 msgstr ""
 
-#: page_analyzer/app.py:101
-msgid "Failed to check the URL."
+#: page_analyzer/app.py:94 page_analyzer/app.py:98
+msgid "An error occurred while checking"
 msgstr ""
 
-#: page_analyzer/app.py:105
-msgid "5xx server error"
+#: page_analyzer/app.py:102
+msgid "The page has been checked successfully"
 msgstr ""
 
-#: page_analyzer/app.py:109
-msgid "URL has been checked successfully."
-msgstr ""
-
-#: page_analyzer/validator.py:14
-msgid "URL is too long."
-msgstr ""
-
-#: page_analyzer/validator.py:17
-msgid "Invalid URL."
+#: page_analyzer/validator.py:14 page_analyzer/validator.py:17
+msgid "Invalid URL"
 msgstr ""
 
 #: page_analyzer/templates/404.html:20 page_analyzer/templates/404.html:25
@@ -89,7 +81,7 @@ msgid "URL to check"
 msgstr ""
 
 #: page_analyzer/templates/index.html:88
-msgid "Check"
+msgid "Run the scan"
 msgstr ""
 
 #: page_analyzer/templates/url.html:61

@@ -11,7 +11,7 @@ def normalize_url(url):
 
 def validate_url(url):
     if len(url) > 255:
-        return gettext("URL is too long.")
+        return gettext("Invalid URL")
 
     if not validators.url(url):
-        return gettext("Invalid URL.")
+        return gettext("Invalid URL")

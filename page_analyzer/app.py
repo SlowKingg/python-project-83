@@ -28,16 +28,9 @@ babel = Babel(app)
 
 
 def get_locale():
-    # Получаем язык из сессии, если есть
     if "lang" in session:
         return session["lang"]
-    # Иначе используем язык браузера
-    return (
-        request.accept_languages.best_match(
-            app.config["BABEL_SUPPORTED_LOCALES"]
-        )
-        or "en"
-    )
+    return "ru"
 
 
 babel.init_app(app, locale_selector=get_locale)
@@ -81,11 +74,11 @@ def add_url():
         return render_template("index.html", url={"name": data}, error=error)
 
     if existing_url := url_repo.get_url_by_name(url):
-        flash(gettext("URL already exists."), "info")
+        flash(gettext("The page already exists"), "info")
         return redirect(url_for("view_url", url_id=existing_url["id"]))
 
     url_id = url_repo.add_url(url)
-    flash(gettext("URL has been added successfully."), "success")
+    flash(gettext("The page has been added successfully"), "success")
     return redirect(url_for("view_url", url_id=url_id))
 
 
@@ -98,15 +91,15 @@ def check_url(url_id):
     try:
         status_code = requests.get(url["name"]).status_code
     except requests.RequestException:
-        flash(gettext("Failed to check the URL."), "danger")
+        flash(gettext("An error occurred while checking"), "danger")
         return redirect(url_for("view_url", url_id=url_id))
 
     if str(status_code)[0] == "5":
-        flash(gettext("5xx server error"), "danger")
+        flash(gettext("An error occurred while checking"), "danger")
         return redirect(url_for("view_url", url_id=url_id))
 
     url_repo.add_url_check_dummy(url_id, status_code)
-    flash(gettext("URL has been checked successfully."), "success")
+    flash(gettext("The page has been checked successfully"), "success")
     return redirect(url_for("view_url", url_id=url_id))
 
 

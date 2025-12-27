@@ -1,17 +1,17 @@
-# Russian translations for Page Analyzer.
-# Copyright (C) 2025 Page Analyzer
-# This file is distributed under the same license as the Page Analyzer
-# project.
+# Russian translations for PROJECT.
+# Copyright (C) 2025 ORGANIZATION
+# This file is distributed under the same license as the PROJECT project.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2025.
 #
 msgid ""
 msgstr ""
-"Project-Id-Version:  1.0\n"
-"Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2025-12-26 21:16+0700\n"
-"PO-Revision-Date: 2025-12-25 12:00+0000\n"
-"Last-Translator: \n"
+"Project-Id-Version: PROJECT VERSION\n"
+"Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
+"POT-Creation-Date: 2025-12-27 18:03+0700\n"
+"PO-Revision-Date: 2025-12-27 18:03+0700\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language: ru\n"
-"Language-Team: Russian\n"
+"Language-Team: ru <LL@li.org>\n"
 "Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && "
 "n%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2);\n"
 "MIME-Version: 1.0\n"
@@ -19,33 +19,25 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Generated-By: Babel 2.17.0\n"
 
-#: page_analyzer/app.py:84
-msgid "URL already exists."
-msgstr "URL уже существует."
+#: page_analyzer/app.py:77
+msgid "The page already exists"
+msgstr "Страница уже существует"
 
-#: page_analyzer/app.py:88
-msgid "URL has been added successfully."
-msgstr "URL успешно добавлен."
+#: page_analyzer/app.py:81
+msgid "The page has been added successfully"
+msgstr "Страница успешно добавлена"
 
-#: page_analyzer/app.py:101
-msgid "Failed to check the URL."
-msgstr "Не удалось проверить URL-адрес."
+#: page_analyzer/app.py:94 page_analyzer/app.py:98
+msgid "An error occurred while checking"
+msgstr "Произошла ошибка при проверке"
 
-#: page_analyzer/app.py:105
-msgid "5xx server error"
-msgstr "ошибка сервера 5xx"
+#: page_analyzer/app.py:102
+msgid "The page has been checked successfully"
+msgstr "Страница успешно проверена"
 
-#: page_analyzer/app.py:109
-msgid "URL has been checked successfully."
-msgstr "Проверка URL-адреса прошла успешно."
-
-#: page_analyzer/validator.py:14
-msgid "URL is too long."
-msgstr "URL слишком длинный."
-
-#: page_analyzer/validator.py:17
-msgid "Invalid URL."
-msgstr "Некорректный URL."
+#: page_analyzer/validator.py:14 page_analyzer/validator.py:17
+msgid "Invalid URL"
+msgstr "Некорректный URL"
 
 #: page_analyzer/templates/404.html:20 page_analyzer/templates/404.html:25
 #: page_analyzer/templates/500.html:20 page_analyzer/templates/500.html:25
@@ -84,15 +76,15 @@ msgstr "Ошибка 500"
 
 #: page_analyzer/templates/index.html:66
 msgid "Check websites for SEO suitability for free"
-msgstr "Бесплатно проверяйте сайты на SEO-пригодность"
+msgstr "Проверьте сайты на пригодность для SEO бесплатно"
 
 #: page_analyzer/templates/index.html:75
 msgid "URL to check"
 msgstr "URL для проверки"
 
 #: page_analyzer/templates/index.html:88
-msgid "Check"
-msgstr "Проверить"
+msgid "Run the scan"
+msgstr "Запустить проверку"
 
 #: page_analyzer/templates/url.html:61
 msgid "Site"
@@ -100,11 +92,11 @@ msgstr "Сайт"
 
 #: page_analyzer/templates/url.html:74 page_analyzer/templates/urls.html:70
 msgid "Name"
-msgstr "Имя"
+msgstr "Название"
 
 #: page_analyzer/templates/url.html:78 page_analyzer/templates/url.html:110
 msgid "Created at"
-msgstr "Дата создания"
+msgstr "Создано"
 
 #: page_analyzer/templates/url.html:105 page_analyzer/templates/urls.html:69
 msgid "ID"
@@ -112,7 +104,7 @@ msgstr "ID"
 
 #: page_analyzer/templates/url.html:106 page_analyzer/templates/urls.html:72
 msgid "Status Code"
-msgstr "Код состояния"
+msgstr "Код статуса"
 
 #: page_analyzer/templates/url.html:107
 msgid "H1 Heading"
@@ -120,7 +112,7 @@ msgstr "Заголовок H1"
 
 #: page_analyzer/templates/url.html:108
 msgid "Title"
-msgstr "Заголовок"
+msgstr "Тег title"
 
 #: page_analyzer/templates/url.html:109
 msgid "Description"
@@ -129,7 +121,4 @@ msgstr "Описание"
 #: page_analyzer/templates/urls.html:71
 msgid "Last Check"
 msgstr "Последняя проверка"
-
-#~ msgid "URL not found."
-#~ msgstr "URL не найден."
 
