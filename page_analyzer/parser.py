@@ -1,9 +1,7 @@
-import requests
 from bs4 import BeautifulSoup
 
 
-def parse_page(url):
-    response = requests.get(url)
+def parse_page(response):
     soup = BeautifulSoup(response.text, "html.parser")
     title = soup.title.string if soup.title else ""
     h1 = soup.h1.string if soup.h1 else ""

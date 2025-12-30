@@ -77,19 +77,16 @@ def check_url(url_id):
         abort(500)
 
     try:
-        status_code = requests.get(url["name"]).status_code
+        response = requests.get(url["name"])
+        response.raise_for_status()
     except requests.RequestException:
         flash(gettext("An error occurred while checking"), "danger")
         return redirect(url_for("view_url", url_id=url_id))
 
-    if status_code >= 400:
-        flash(gettext("An error occurred while checking"), "danger")
-        return redirect(url_for("view_url", url_id=url_id))
-
-    data = parse_page(url["name"])
+    data = parse_page(response)
     url_repo.add_url_check(
         url_id,
-        status_code,
+        response.status_code,
         data["h1"],
         data["title"],
         data["description"],
