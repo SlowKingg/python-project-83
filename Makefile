@@ -24,16 +24,9 @@ build:
 render-start:
 	gunicorn -w 5 -b 0.0.0.0:$(PORT) page_analyzer:app
 
-# Run tests using pytest
-# test:
-# 	uv run pytest
-
 # Check code style with ruff
 lint:
 	uv run ruff check page_analyzer
-
-# Run both tests and linting
-check: lint
 
 # Initialize database from database.sql
 db-init:
