@@ -39,6 +39,10 @@ check: lint
 db-init:
 	psql -a $(DATABASE_URL) -f database.sql
 
+# Drop tables if manual cleanup is required
+db-drop:
+	psql -a $(DATABASE_URL) -c "DROP TABLE IF EXISTS url_checks; DROP TABLE IF EXISTS urls;"
+
 # Babel / i18n settings
 BABEL_CFG ?= babel.cfg
 TRANS_DIR ?= page_analyzer/translations
@@ -62,4 +66,4 @@ babel-compile:
 	uv run pybabel compile -d $(TRANS_DIR)
 
 # Declare phony targets
-.PHONY: install dev start build render-start db-init babel-extract babel-init babel-update babel-compile
+.PHONY: install dev start build render-start db-init db-drop babel-extract babel-init babel-update babel-compile
