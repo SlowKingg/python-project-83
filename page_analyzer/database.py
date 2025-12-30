@@ -39,13 +39,15 @@ class UrlRepository:
         with self.get_connection() as conn:
             with conn.cursor(cursor_factory=DictCursor) as cursor:
                 cursor.execute(
-                    """SELECT urls.id, urls.name,
-                       url_checks.status_code,
-                       url_checks.created_at AS last_check_at
-                       FROM urls
-                       LEFT JOIN url_checks
-                       ON urls.id = url_checks.url_id
-                       ORDER BY urls.id DESC
+                    """SELECT DISTINCT ON (urls.id)
+                        urls.id,
+                        urls.name,
+                        url_checks.status_code,
+                        url_checks.created_at AS last_check_at
+                        FROM urls
+                        LEFT JOIN url_checks
+                        ON urls.id = url_checks.url_id
+                        ORDER BY urls.id DESC
                     """
                 )
                 rows = cursor.fetchall()
