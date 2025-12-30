@@ -24,13 +24,13 @@
         </table>
     </div>
 
-    <h2 class="mt-5 mb-3">Проверки</h2>
+    <h2 class="mt-5 mb-3">{{ _('Checks') }}</h2>
     <form method="post" action="/urls/{{ url.id }}/checks" class="mb-4">
         <input type="hidden" name="csrf_token" value="{{ csrf_token() }}" />
         <input
             type="submit"
             class="btn btn-primary"
-            value="Запустить проверку"
+            value="{{ _('Run Check') }}"
         />
     </form>
 

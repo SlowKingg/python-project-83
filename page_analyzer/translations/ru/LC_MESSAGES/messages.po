@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2025-12-27 18:03+0700\n"
+"POT-Creation-Date: 2025-12-30 16:36+0700\n"
 "PO-Revision-Date: 2025-12-27 18:03+0700\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language: ru\n"
@@ -19,106 +19,108 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Generated-By: Babel 2.17.0\n"
 
-#: page_analyzer/app.py:77
+#: page_analyzer/app.py:66
 msgid "The page already exists"
 msgstr "Страница уже существует"
 
-#: page_analyzer/app.py:81
+#: page_analyzer/app.py:70
 msgid "The page has been added successfully"
 msgstr "Страница успешно добавлена"
 
-#: page_analyzer/app.py:94 page_analyzer/app.py:98
+#: page_analyzer/app.py:84
 msgid "An error occurred while checking"
 msgstr "Произошла ошибка при проверке"
 
-#: page_analyzer/app.py:102
+#: page_analyzer/app.py:95
 msgid "The page has been checked successfully"
 msgstr "Страница успешно проверена"
 
-#: page_analyzer/validator.py:14 page_analyzer/validator.py:17
+#: page_analyzer/validator.py:14
 msgid "Invalid URL"
 msgstr "Некорректный URL"
 
-#: page_analyzer/templates/404.html:20 page_analyzer/templates/404.html:25
-#: page_analyzer/templates/500.html:20 page_analyzer/templates/500.html:25
-#: page_analyzer/templates/index.html:20 page_analyzer/templates/index.html:25
-#: page_analyzer/templates/index.html:64 page_analyzer/templates/url.html:19
-#: page_analyzer/templates/url.html:24 page_analyzer/templates/urls.html:20
-#: page_analyzer/templates/urls.html:25
-msgid "Page Analyzer"
-msgstr "Анализатор страниц"
-
-#: page_analyzer/templates/404.html:30 page_analyzer/templates/500.html:30
-#: page_analyzer/templates/index.html:30 page_analyzer/templates/url.html:29
-#: page_analyzer/templates/urls.html:30 page_analyzer/templates/urls.html:60
-msgid "Sites"
-msgstr "Сайты"
-
-#: page_analyzer/templates/404.html:52
+#: page_analyzer/templates/404.html:3
 msgid "Page not found"
 msgstr "Страница не найдена"
 
-#: page_analyzer/templates/404.html:54
+#: page_analyzer/templates/404.html:5
 msgid "There's nothing here you're looking for"
 msgstr "Здесь нет того, что вы ищете"
 
-#: page_analyzer/templates/404.html:55
+#: page_analyzer/templates/404.html:6
 msgid "Return to homepage"
 msgstr "Вернуться на главную"
 
-#: page_analyzer/templates/500.html:52
+#: page_analyzer/templates/500.html:3
 msgid "Oops, something went wrong"
 msgstr "Упс, что-то пошло не так"
 
-#: page_analyzer/templates/500.html:56
+#: page_analyzer/templates/500.html:7
 msgid "Error 500"
 msgstr "Ошибка 500"
 
-#: page_analyzer/templates/index.html:66
+#: page_analyzer/templates/base.html:20 page_analyzer/templates/base.html:25
+#: page_analyzer/templates/index.html:7
+msgid "Page Analyzer"
+msgstr "Анализатор страниц"
+
+#: page_analyzer/templates/base.html:30 page_analyzer/templates/urls.html:3
+msgid "Sites"
+msgstr "Сайты"
+
+#: page_analyzer/templates/index.html:9
 msgid "Check websites for SEO suitability for free"
 msgstr "Проверьте сайты на пригодность для SEO бесплатно"
 
-#: page_analyzer/templates/index.html:75
+#: page_analyzer/templates/index.html:22
 msgid "URL to check"
 msgstr "URL для проверки"
 
-#: page_analyzer/templates/index.html:88
+#: page_analyzer/templates/index.html:36
 msgid "Run the scan"
 msgstr "Запустить проверку"
 
-#: page_analyzer/templates/url.html:61
+#: page_analyzer/templates/url.html:3
 msgid "Site"
 msgstr "Сайт"
 
-#: page_analyzer/templates/url.html:74 page_analyzer/templates/urls.html:70
+#: page_analyzer/templates/url.html:16 page_analyzer/templates/urls.html:13
 msgid "Name"
 msgstr "Название"
 
-#: page_analyzer/templates/url.html:78 page_analyzer/templates/url.html:110
+#: page_analyzer/templates/url.html:20 page_analyzer/templates/url.html:46
 msgid "Created at"
 msgstr "Создано"
 
-#: page_analyzer/templates/url.html:105 page_analyzer/templates/urls.html:69
+#: page_analyzer/templates/url.html:27
+msgid "Checks"
+msgstr "Проверки"
+
+#: page_analyzer/templates/url.html:33
+msgid "Run Check"
+msgstr "Запустить проверку"
+
+#: page_analyzer/templates/url.html:41 page_analyzer/templates/urls.html:12
 msgid "ID"
 msgstr "ID"
 
-#: page_analyzer/templates/url.html:106 page_analyzer/templates/urls.html:72
+#: page_analyzer/templates/url.html:42 page_analyzer/templates/urls.html:15
 msgid "Status Code"
 msgstr "Код статуса"
 
-#: page_analyzer/templates/url.html:107
+#: page_analyzer/templates/url.html:43
 msgid "H1 Heading"
 msgstr "Заголовок H1"
 
-#: page_analyzer/templates/url.html:108
+#: page_analyzer/templates/url.html:44
 msgid "Title"
 msgstr "Заголовок"
 
-#: page_analyzer/templates/url.html:109
+#: page_analyzer/templates/url.html:45
 msgid "Description"
 msgstr "Описание"
 
-#: page_analyzer/templates/urls.html:71
+#: page_analyzer/templates/urls.html:14
 msgid "Last Check"
 msgstr "Последняя проверка"
 
