@@ -9,7 +9,8 @@ from flask import (
     session,
     url_for,
 )
-from flask_babel import Babel, gettext
+from flask_babel import Babel
+from flask_babel import gettext as _
 from flask_wtf.csrf import CSRFProtect
 
 from .config import Config
@@ -62,11 +63,11 @@ def add_url():
         ), 422
 
     if existing_url := url_repo.get_url_by_name(url):
-        flash(gettext("The page already exists"), "info")
+        flash(_("The page already exists"), "info")
         return redirect(url_for("view_url", url_id=existing_url["id"]))
 
     url_id = url_repo.add_url(url)
-    flash(gettext("The page has been added successfully"), "success")
+    flash(_("The page has been added successfully"), "success")
     return redirect(url_for("view_url", url_id=url_id))
 
 
@@ -80,7 +81,7 @@ def check_url(url_id):
         response = requests.get(url["name"])
         response.raise_for_status()
     except requests.RequestException:
-        flash(gettext("An error occurred while checking"), "danger")
+        flash(_("An error occurred while checking"), "danger")
         return redirect(url_for("view_url", url_id=url_id))
 
     data = parse_page(response)
@@ -91,7 +92,7 @@ def check_url(url_id):
         data["title"],
         data["description"],
     )
-    flash(gettext("The page has been checked successfully"), "success")
+    flash(_("The page has been checked successfully"), "success")
     return redirect(url_for("view_url", url_id=url_id))
 
 
