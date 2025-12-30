@@ -38,7 +38,16 @@ class UrlRepository:
     def get_all_urls(self):
         with self.get_connection() as conn:
             with conn.cursor(cursor_factory=DictCursor) as cursor:
-                cursor.execute("SELECT * FROM urls ORDER BY id DESC")
+                cursor.execute(
+                    """SELECT urls.id, urls.name,
+                       url_checks.status_code,
+                       url_checks.created_at AS last_check_at
+                       FROM urls
+                       LEFT JOIN url_checks
+                       ON urls.id = url_checks.url_id
+                       ORDER BY urls.id DESC
+                    """
+                )
                 rows = cursor.fetchall()
                 return [dict(row) for row in rows]
 

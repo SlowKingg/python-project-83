@@ -46,11 +46,6 @@ def index():
 @app.get("/urls")
 def list_urls():
     urls = url_repo.get_all_urls()
-    for url in urls:
-        last_check = url_repo.get_last_url_check(url["id"])
-        if last_check:
-            url["last_check_at"] = last_check["created_at"]
-            url["status_code"] = last_check["status_code"]
 
     return render_template("urls.html", urls=urls)
 
