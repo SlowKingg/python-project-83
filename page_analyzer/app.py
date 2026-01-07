@@ -84,7 +84,7 @@ def check_url(url_id):
         flash(_("An error occurred while checking"), "danger")
         return redirect(url_for("view_url", url_id=url_id))
 
-    data = parse_page(response)
+    data = parse_page(response.text)
     url_repo.add_url_check(
         url_id,
         response.status_code,

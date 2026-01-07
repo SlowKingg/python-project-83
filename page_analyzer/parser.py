@@ -1,8 +1,8 @@
 from bs4 import BeautifulSoup
 
 
-def parse_page(response):
-    soup = BeautifulSoup(response.text, "html.parser")
+def parse_page(html_content):
+    soup = BeautifulSoup(html_content, "html.parser")
     title = soup.title.string if soup.title else ""
     h1 = soup.h1.string if soup.h1 else ""
     description_tag = soup.find("meta", attrs={"name": "description"})
