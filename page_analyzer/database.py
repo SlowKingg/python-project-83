@@ -22,10 +22,10 @@ class DbContextManager:
 
 class UrlRepository:
     def __init__(self, db_url):
-        self.db_url = db_url
+        self.db_context = DbContextManager(db_url)
 
     def add_url(self, url):
-        with DbContextManager(self.db_url) as (conn, cursor):
+        with self.db_context as (conn, cursor):
             cursor.execute(
                 "INSERT INTO urls (name) VALUES (%s) RETURNING id", (url,)
             )
@@ -33,19 +33,19 @@ class UrlRepository:
             return row.id if row else None  # pyright: ignore[reportAttributeAccessIssue]
 
     def get_url_by_id(self, url_id):
-        with DbContextManager(self.db_url) as (conn, cursor):
+        with self.db_context as (conn, cursor):
             cursor.execute("SELECT * FROM urls WHERE id = %s", (url_id,))
             row = cursor.fetchone()
             return row
 
     def get_url_by_name(self, url_name):
-        with DbContextManager(self.db_url) as (conn, cursor):
+        with self.db_context as (conn, cursor):
             cursor.execute("SELECT * FROM urls WHERE name = %s", (url_name,))
             row = cursor.fetchone()
             return row
 
     def get_all_urls(self):
-        with DbContextManager(self.db_url) as (conn, cursor):
+        with self.db_context as (conn, cursor):
             cursor.execute(
                 """SELECT DISTINCT ON (urls.id)
                         urls.id,
@@ -62,7 +62,7 @@ class UrlRepository:
             return rows
 
     def add_url_check(self, url_id, status_code, h1, title, description):
-        with DbContextManager(self.db_url) as (conn, cursor):
+        with self.db_context as (conn, cursor):
             cursor.execute(
                 """
                 INSERT INTO url_checks
@@ -73,7 +73,7 @@ class UrlRepository:
             )
 
     def get_url_checks(self, url_id):
-        with DbContextManager(self.db_url) as (conn, cursor):
+        with self.db_context as (conn, cursor):
             cursor.execute(
                 """
                     SELECT * FROM url_checks
@@ -86,7 +86,7 @@ class UrlRepository:
             return rows
 
     def get_last_url_check(self, url_id):
-        with DbContextManager(self.db_url) as (conn, cursor):
+        with self.db_context as (conn, cursor):
             cursor.execute(
                 """
                     SELECT *
@@ -101,7 +101,7 @@ class UrlRepository:
             return row
 
     def get_url_check_by_id(self, check_id):
-        with DbContextManager(self.db_url) as (conn, cursor):
+        with self.db_context as (conn, cursor):
             cursor.execute(
                 "SELECT * FROM url_checks WHERE id = %s", (check_id,)
             )
