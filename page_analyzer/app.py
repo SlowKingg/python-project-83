@@ -64,7 +64,7 @@ def add_url():
 
     if existing_url := url_repo.get_url_by_name(url):
         flash(_("The page already exists"), "info")
-        return redirect(url_for("view_url", url_id=existing_url["id"]))
+        return redirect(url_for("view_url", url_id=existing_url.id))  # pyright: ignore[reportAttributeAccessIssue]
 
     url_id = url_repo.add_url(url)
     flash(_("The page has been added successfully"), "success")
@@ -78,7 +78,7 @@ def check_url(url_id):
         abort(500)
 
     try:
-        response = requests.get(url["name"])
+        response = requests.get(url.name)  # pyright: ignore[reportAttributeAccessIssue]
         response.raise_for_status()
     except requests.RequestException:
         flash(_("An error occurred while checking"), "danger")
@@ -102,8 +102,7 @@ def view_url(url_id):
     if not url:
         abort(404)
     checks = url_repo.get_url_checks(url_id)
-    url["checks"] = checks
-    return render_template("url.html", url=url)
+    return render_template("url.html", url=url, checks=checks)
 
 
 @app.errorhandler(500)

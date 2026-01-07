@@ -1,5 +1,5 @@
 import psycopg2
-from psycopg2.extras import DictCursor
+from psycopg2.extras import NamedTupleCursor
 
 
 class db_context_manager:
@@ -8,7 +8,7 @@ class db_context_manager:
 
     def __enter__(self):
         self.conn = psycopg2.connect(self.db_url)
-        self.cursor = self.conn.cursor(cursor_factory=DictCursor)
+        self.cursor = self.conn.cursor(cursor_factory=NamedTupleCursor)
         return self.conn, self.cursor
 
     def __exit__(self, exc_type, exc_value, traceback):
@@ -30,19 +30,19 @@ class UrlRepository:
                 "INSERT INTO urls (name) VALUES (%s) RETURNING id", (url,)
             )
             row = cursor.fetchone()
-            return row["id"] if row else None
+            return row.id if row else None  # pyright: ignore[reportAttributeAccessIssue]
 
     def get_url_by_id(self, url_id):
         with db_context_manager(self.db_url) as (conn, cursor):
             cursor.execute("SELECT * FROM urls WHERE id = %s", (url_id,))
             row = cursor.fetchone()
-            return dict(row) if row else None
+            return row
 
     def get_url_by_name(self, url_name):
         with db_context_manager(self.db_url) as (conn, cursor):
             cursor.execute("SELECT * FROM urls WHERE name = %s", (url_name,))
             row = cursor.fetchone()
-            return dict(row) if row else None
+            return row
 
     def get_all_urls(self):
         with db_context_manager(self.db_url) as (conn, cursor):
@@ -59,7 +59,7 @@ class UrlRepository:
                     """
             )
             rows = cursor.fetchall()
-            return [dict(row) for row in rows]
+            return rows
 
     def add_url_check(self, url_id, status_code, h1, title, description):
         with db_context_manager(self.db_url) as (conn, cursor):
@@ -83,7 +83,7 @@ class UrlRepository:
                 (url_id,),
             )
             rows = cursor.fetchall()
-            return [dict(row) for row in rows]
+            return rows
 
     def get_last_url_check(self, url_id):
         with db_context_manager(self.db_url) as (conn, cursor):
@@ -98,7 +98,7 @@ class UrlRepository:
                 (url_id,),
             )
             row = cursor.fetchone()
-            return dict(row) if row else None
+            return row
 
     def get_url_check_by_id(self, check_id):
         with db_context_manager(self.db_url) as (conn, cursor):
@@ -106,4 +106,4 @@ class UrlRepository:
                 "SELECT * FROM url_checks WHERE id = %s", (check_id,)
             )
             row = cursor.fetchone()
-            return dict(row) if row else None
+            return row
